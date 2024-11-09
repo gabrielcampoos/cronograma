@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Box, TextField, Button, Typography } from '@mui/material';
+import { useAppDispatch } from '../../../../store/hooks';
 
 interface LoginModalProps {
 	open: boolean;
@@ -10,6 +11,8 @@ interface LoginModalProps {
 const LoginModal = ({ open, onClose, onSubmit }: LoginModalProps) => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+
+	const dispatch = useAppDispatch();
 
 	const handleLogin = () => {
 		// Validação simples do login

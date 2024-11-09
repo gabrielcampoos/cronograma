@@ -102,12 +102,12 @@ const Home = () => {
 		}
 	};
 
-	// Função para lidar com o login e permitir a ação
 	const handleLoginSubmit = (username: string, password: string) => {
 		// Dispara a ação loginUser passando as credenciais
 		dispatch(loginUser({ username, password }))
 			.unwrap()
 			.then((response) => {
+				console.log('Resposta do login:', response); // Adicione este log para verificar a resposta
 				if (response.success && response.data) {
 					setIsLoggedIn(true); // Marca o login como realizado
 					localStorage.setItem('isLoggedIn', 'true'); // Salva o status de login no localStorage
@@ -121,10 +121,12 @@ const Home = () => {
 						alert('Ação permitida! Excluindo os cards.');
 					}
 				} else {
+					console.log('Credenciais incorretas ou falha na resposta');
 					alert('Credenciais incorretas.');
 				}
 			})
 			.catch((error) => {
+				console.log('Erro ao realizar login:', error); // Adicione este log para verificar o erro
 				alert('Erro ao realizar login: ' + error.message);
 			});
 	};
