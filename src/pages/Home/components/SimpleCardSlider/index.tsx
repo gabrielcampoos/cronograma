@@ -41,7 +41,8 @@ interface Card {
 	discipline: string;
 	foundStartTimeValue: string;
 	foundEndTimeValue: string;
-	order: string;
+	order?: string;
+	pelotao: number;
 }
 
 interface SimpleCardSliderProps {
@@ -67,7 +68,8 @@ const SimpleCardSlider: React.FC<SimpleCardSliderProps> = ({ cards }) => {
 							discipline={card.discipline}
 							foundStartTimeValue={card.foundStartTimeValue}
 							foundEndTimeValue={card.foundEndTimeValue}
-							order={card.order}
+							order={card.order!}
+							pelotao={card.pelotao}
 						/>
 					</div>
 				))}

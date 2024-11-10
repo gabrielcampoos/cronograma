@@ -21,15 +21,17 @@ type CardData = {
 	discipline: string;
 	foundStartTimeValue: string;
 	foundEndTimeValue: string;
+	pelotao: number;
 };
 
 interface ModalProps {
 	open: boolean;
 	onClose: () => void;
 	onSave: (data: CardData) => void;
+	pelotao: number;
 }
 
-export const Modal = ({ onSave, onClose, open }: ModalProps) => {
+export const Modal = ({ onSave, onClose, open, pelotao }: ModalProps) => {
 	const [date, setDate] = useState('');
 	const [startTime, setStartTime] = useState('');
 	const [endTime, setEndTime] = useState('');
@@ -104,6 +106,7 @@ export const Modal = ({ onSave, onClose, open }: ModalProps) => {
 				discipline: name, // Passa o name da disciplina encontrado
 				foundStartTimeValue: foundStartTime!.startTime,
 				foundEndTimeValue: foundEndTime!.endTime,
+				pelotao,
 			};
 
 			onSave(newCardData); // Call onSave with new card data

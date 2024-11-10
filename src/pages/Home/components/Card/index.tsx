@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { Icon, IconButton } from '@mui/material';
+import { Divider, Icon, IconButton } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PersonIcon from '@mui/icons-material/Person';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
@@ -16,7 +16,8 @@ interface SimpleCardProps {
 	discipline: string;
 	foundStartTimeValue: string;
 	foundEndTimeValue: string;
-	order: string;
+	order?: string;
+	pelotao: number;
 }
 
 export default function SimpleCard({
@@ -49,16 +50,26 @@ export default function SimpleCard({
 			sx={{
 				display: 'flex',
 				justifyContent: 'center',
+				alignItems: 'center',
+				flexDirection: 'column',
 				p: 2,
 			}}
 		>
+			<Typography
+				component="h2"
+				variant="h5"
+				sx={{ fontWeight: 600, mb: 3, color: '#000' }}
+			>
+				{dayOfWeek}
+			</Typography>
+
 			<Paper
 				elevation={3}
 				sx={{
-					width: 300,
+					width: 280,
 					height: 400,
-					p: 3,
-					borderRadius: 2,
+					p: 2,
+					borderRadius: 8,
 					textAlign: 'center',
 					display: 'flex',
 					flexDirection: 'column',
@@ -66,26 +77,18 @@ export default function SimpleCard({
 					justifyContent: 'space-between',
 				}}
 			>
-				<Typography
-					component="h2"
-					variant="h6"
-					sx={{ fontWeight: 700, mb: 1, color: '#3f51b5' }}
-				>
-					{dayOfWeek}
-				</Typography>
-
 				{/* Circle with number */}
 				<Box
 					sx={{
-						width: 90,
-						height: 90,
+						width: 130,
+						height: 130,
 						borderRadius: '50%',
-						border: '2px solid #3f51b5',
+						border: '5px solid #0071e3',
 						display: 'flex',
 						alignItems: 'center',
 						justifyContent: 'center',
-						color: '#3f51b5',
-						fontSize: '2rem',
+						color: '#0071e3',
+						fontSize: '4rem',
 						fontWeight: 'bold',
 					}}
 				>
@@ -100,93 +103,136 @@ export default function SimpleCard({
 				>
 					{`${foundStartTimeValue} às ${foundEndTimeValue}`}
 				</Typography>
+
 				<Typography
 					variant="h6"
 					sx={{
-						fontWeight: 500,
-						mt: 1,
-						fontSize: '1rem',
+						fontSize: '0.9rem',
+						color: '#0071e3',
+						marginTop: -5,
 					}}
 				>
 					{/* Exibe os tempos como "startTime° a endTime° Tempo" */}
 					{`${startTime}° a ${endTime}° Tempo`}
 				</Typography>
 
+				<Divider
+					sx={{
+						width: '80%',
+						borderWidth: '1px',
+						mt: -3,
+					}}
+				/>
+
 				{/* Instructor and rank */}
 				<Box
 					sx={{
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-						mb: 1,
+						width: '80%',
+						mt: -2,
 					}}
 				>
-					<Icon
+					<Box
 						sx={{
-							mr: 0.5,
-							color: '#3f51b5',
+							width: '100%',
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'flex-start',
+							mb: 1,
+							gap: 1,
 						}}
 					>
-						<PersonIcon />
-					</Icon>
-					<Typography variant="body2">
-						<span
-							style={{
-								backgroundColor: 'rgba(127, 255, 67, 0.2)',
-								border: 'solid 1px green',
-								padding: 3,
-								borderRadius: '5px',
-								color: '#000',
-								fontWeight: 700,
+						<lord-icon
+							src="https://cdn.lordicon.com/kthelypq.json"
+							trigger="loop"
+							delay="2000"
+							style={{ width: '30px', height: '30px' }}
+						></lord-icon>
+
+						<Typography
+							variant="body2"
+							sx={{
+								fontWeight: 500,
+								color: '#828d9c',
+								fontSize: '0.9rem',
 							}}
 						>
-							{patent}
-						</span>{' '}
-						{instructor}
-					</Typography>
-				</Box>
+							<span
+								style={{
+									backgroundColor: 'rgba(127, 255, 67, 0.2)',
+									border: 'solid 1px green',
+									padding: 1,
+									borderRadius: '5px',
+									color: '#000',
+									fontWeight: 700,
+								}}
+							>
+								{patent}
+							</span>{' '}
+							{instructor}
+						</Typography>
+					</Box>
 
-				{/* Subject */}
-				<Box
-					sx={{
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-						mb: 1,
-					}}
-				>
-					<Icon
+					{/* Subject */}
+					<Box
 						sx={{
-							mr: 0.5,
-							color: '#3f51b5',
+							width: '100%',
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'flex-start',
+							mb: 1,
+							gap: 1,
 						}}
 					>
-						<LocalLibraryIcon />
-					</Icon>
-					<Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-						{discipline}
-					</Typography>
-				</Box>
+						<lord-icon
+							src="https://cdn.lordicon.com/zyzoecaw.json"
+							trigger="loop"
+							delay="6000"
+							state="morph-book"
+							style={{ width: '30px', height: '30px' }}
+						></lord-icon>
 
-				{/* Date */}
-				<Box
-					sx={{
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-						mt: 1,
-					}}
-				>
-					<CalendarTodayIcon
+						<Typography
+							variant="body2"
+							sx={{
+								fontWeight: 500,
+								color: '#828d9c',
+								fontSize: '0.9rem',
+							}}
+						>
+							{discipline}
+						</Typography>
+					</Box>
+
+					{/* Date */}
+					<Box
 						sx={{
-							color: 'gray',
-							fontSize: '1rem',
-							mr: 0.5,
+							width: '100%',
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'flex-start',
+							mt: 1,
+							gap: 1,
 						}}
-					/>
-					<Typography variant="body2" color="text.secondary">
-						{formattedDate}
-					</Typography>
+					>
+						<lord-icon
+							src="https://cdn.lordicon.com/abfverha.json"
+							trigger="loop"
+							delay="7000"
+							state="morph-calendar"
+							style={{ width: '30px', height: '30px' }}
+						></lord-icon>
+
+						<Typography
+							variant="body2"
+							sx={{
+								fontWeight: 500,
+								color: '#828d9c',
+								fontSize: '0.9rem',
+							}}
+						>
+							{formattedDate}
+						</Typography>
+					</Box>
 				</Box>
 			</Paper>
 		</Box>
